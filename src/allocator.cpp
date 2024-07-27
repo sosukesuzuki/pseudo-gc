@@ -7,8 +7,8 @@ namespace PGC {
 Allocator::Allocator()
 {
     constexpr auto numOfCells = 1024;
-    constexpr auto size = numOfCells * sizeof(Cell);
-    m_start = (Cell*)std::malloc(size);
+    constexpr auto sizeOfCell = sizeof(Cell);
+    m_start = (Cell*)std::calloc(numOfCells, sizeOfCell);
     if (m_start == nullptr)
         throw std::bad_alloc();
     m_free = m_start;
