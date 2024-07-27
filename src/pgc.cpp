@@ -1,8 +1,8 @@
 #include <iostream>
+#include "cell.h"
 
 int main()
 {
-    std::cout << "Hello, World" << std::endl;
-
+    std::cout << sizeof(PGC::Cell) << "bytes" << std::endl;
     return 0;
 }
