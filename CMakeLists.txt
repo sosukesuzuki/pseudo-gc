@@ -7,7 +7,9 @@ project(PseudoGC
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(pgc
-               src/pgc.cpp)
+               src/pgc.cpp
+               src/cell.cpp
+               src/allocator.cpp)
 
 
 target_include_directories(pgc PRIVATE src)
