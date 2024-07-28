@@ -4,8 +4,10 @@ namespace PGC {
 
 void Cell::writeBarrier(Cell* parent, Cell* oldChild, Cell* newChild)
 {
-    oldChild->m_refs--;
-    newChild->m_refs++;
+    if (oldChild != nullptr)
+        oldChild->m_refs--;
+    if (newChild != nullptr)
+        newChild->m_refs++;
 }
 
 void Cell::writeToPtr1(Cell* parent, Cell* newChild)
