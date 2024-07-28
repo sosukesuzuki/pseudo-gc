@@ -29,6 +29,7 @@ void PseudoMutator::allocate()
 
     for (size_t i = 0; i < numOfRoots; ++i) {
         Cell* root = m_allocator->allocate();
+        root->m_refs++;
         m_roots->push_back(root);
     }
 
