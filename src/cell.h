@@ -11,8 +11,8 @@ enum class CellStatus : uint8_t {
 
 class Cell {
 public:
-    Cell();
-    ~Cell() = default;
+    Cell() = delete;
+    ~Cell() = delete;
     CellStatus m_cellStatus;
     size_t m_refs;
     Cell* m_ptr1;
