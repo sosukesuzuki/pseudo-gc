@@ -1,10 +1,10 @@
 #include "pseudo-collector.h"
 #include "allocator.h"
 #include "cell.h"
+#include <iostream>
 #include <memory>
 #include <stack>
 #include <vector>
-#include <iostream>
 
 namespace PGC {
 
