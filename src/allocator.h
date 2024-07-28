@@ -16,6 +16,7 @@ public:
     Allocator();
     ~Allocator();
     Cell* allocate();
+    static constexpr size_t numOfCells = 1024;
 
     class Iterator {
     public:

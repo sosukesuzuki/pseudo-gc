@@ -21,8 +21,7 @@ void PseudoMutator::mutate()
 
 void PseudoMutator::allocate()
 {
-    constexpr auto numOfRoots = 3;
-    constexpr auto numOfCells = 1024;
+    constexpr auto numOfRoots = 10;
 
     std::uniform_int_distribution<> rootDist(0, numOfRoots - 1);
     std::uniform_int_distribution<> fieldDist(0, 2);
@@ -38,7 +37,7 @@ void PseudoMutator::allocate()
         cells.push_back(root);
     }
 
-    for (size_t i = numOfRoots; i < numOfCells; ++i) {
+    for (size_t i = numOfRoots; i < Allocator::numOfCells; ++i) {
         Cell* cell = m_allocator->allocate();
         Cell* parent = cells[rootDist(*m_gen)];
         switch (fieldDist(*m_gen)) {
@@ -58,7 +57,7 @@ void PseudoMutator::allocate()
 
 void PseudoMutator::removeReferences()
 {
-    constexpr auto removeProbability = 0.8;
+    constexpr auto removeProbability = 0.1;
 
     std::uniform_int_distribution<> probDist(0.0, 1.0);
     std::stack<Cell*> stack;

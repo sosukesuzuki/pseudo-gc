@@ -19,7 +19,5 @@ int main()
     PGC::PseudoCollector collector(allocator, roots);
     collector.collect();
 
-    std::cout << 1 << std::endl;
-
     return 0;
 }

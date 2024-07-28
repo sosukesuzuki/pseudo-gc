@@ -6,13 +6,12 @@ namespace PGC {
 
 Allocator::Allocator()
 {
-    constexpr auto numOfCells = 1024;
     constexpr auto sizeOfCell = sizeof(Cell);
-    m_start = (Cell*)std::calloc(numOfCells, sizeOfCell);
+    m_start = (Cell*)std::calloc(Allocator::numOfCells, sizeOfCell);
     if (m_start == nullptr)
         throw std::bad_alloc();
     m_free = m_start;
-    m_limit = m_start + numOfCells;
+    m_limit = m_start + Allocator::numOfCells;
 }
 
 Allocator::~Allocator()

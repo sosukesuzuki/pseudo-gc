@@ -39,14 +39,17 @@ void PseudoCollector::mark()
 
 void PseudoCollector::sweep()
 {
+    int i = 0;
     for (auto& cell : *m_allocator) {
         if (cell.m_cellStatus == CellStatus::White) {
+            i++;
             cell.m_ptr1 = nullptr;
             cell.m_ptr2 = nullptr;
             cell.m_ptr3 = nullptr;
             cell.m_refs = 0;
         }
     }
+    std::cout << i << std::endl;
 }
 
 void PseudoCollector::collect()
