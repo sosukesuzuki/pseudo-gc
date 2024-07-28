@@ -1,6 +1,6 @@
 # pseudo-gc
 
-pseudo-gc is an implementation of a pseudo-garbage collection system written in C++. This project is for practicing and experimenting with my GC implementation.
+pseudo-gc is an implementation of a pseudo-garbage collection system written in C++. This project is for practicing and experimenting with my GC implementation. The architecture and implementation of this project will continue to evolve.
 
 ## Architecture
 
