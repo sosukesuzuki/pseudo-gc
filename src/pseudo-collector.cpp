@@ -1,14 +1,18 @@
 #include "pseudo-collector.h"
 #include "allocator.h"
 #include "cell.h"
-#include <vector>
-#include <stack>
 #include <memory>
+#include <stack>
+#include <vector>
+#include <iostream>
 
 namespace PGC {
 
 PseudoCollector::PseudoCollector(std::shared_ptr<Allocator> allocator, std::shared_ptr<std::vector<Cell*>> roots)
-    : m_allocator(allocator), m_roots(roots) {}
+    : m_allocator(allocator)
+    , m_roots(roots)
+{
+}
 
 void PseudoCollector::mark()
 {
@@ -34,7 +38,16 @@ void PseudoCollector::mark()
 }
 
 void PseudoCollector::sweep()
-{}
+{
+    for (auto& cell : *m_allocator) {
+        if (cell.m_cellStatus == CellStatus::White) {
+            cell.m_ptr1 = nullptr;
+            cell.m_ptr2 = nullptr;
+            cell.m_ptr3 = nullptr;
+            cell.m_refs = 0;
+        }
+    }
+}
 
 void PseudoCollector::collect()
 {

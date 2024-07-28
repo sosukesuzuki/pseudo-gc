@@ -1,6 +1,7 @@
 #include "allocator.h"
 #include "cell.h"
 #include "pseudo-mutator.h"
+#include "pseudo-collector.h"
 #include <iostream>
 #include <memory>
 #include <random>
@@ -14,6 +15,9 @@ int main()
 
     PGC::PseudoMutator mutator(allocator, roots, gen);
     mutator.mutate();
+
+    PGC::PseudoCollector collector(allocator, roots);
+    collector.collect();
 
     std::cout << 1 << std::endl;
 

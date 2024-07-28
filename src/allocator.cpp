@@ -36,4 +36,52 @@ Cell* Allocator::allocate()
         return allocate();
 }
 
+Allocator::Iterator::Iterator(Cell* ptr)
+    : m_current(ptr)
+{
+}
+
+Allocator::Iterator::reference Allocator::Iterator::operator*() const
+{
+    return *m_current;
+}
+
+Allocator::Iterator::pointer Allocator::Iterator::operator->()
+{
+    return m_current;
+}
+
+Allocator::Iterator& Allocator::Iterator::operator++()
+{
+    ++m_current;
+    return *this;
+}
+
+Allocator::Iterator Allocator::Iterator::operator++(int)
+{
+    Iterator tmp = *this;
+    ++(*this);
+    return tmp;
+}
+
+bool operator==(const Allocator::Iterator& a, const Allocator::Iterator& b)
+{
+    return a.m_current == b.m_current;
+}
+
+bool operator!=(const Allocator::Iterator& a, const Allocator::Iterator& b)
+{
+    return a.m_current != b.m_current;
+}
+
+Allocator::Iterator Allocator::begin()
+{
+    return Iterator(m_start);
+}
+
+Allocator::Iterator Allocator::end()
+{
+    return Iterator(m_free);
+}
+
 } /* PGC */

@@ -10,7 +10,8 @@ add_executable(pgc
                src/pgc.cpp
                src/cell.cpp
                src/allocator.cpp
-               src/pseudo-mutator.cpp)
+               src/pseudo-mutator.cpp
+               src/pseudo-collector.cpp)
 
 
 target_include_directories(pgc PRIVATE src)
