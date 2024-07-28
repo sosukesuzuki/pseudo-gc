@@ -26,13 +26,14 @@ Cell* Allocator::allocate()
         return nullptr;
 
     auto cell = m_free++;
-    cell->m_cellStatus = CellStatus::White;
-    cell->m_refs = 0;
-    cell->m_ptr1 = nullptr;
-    cell->m_ptr2 = nullptr;
-    cell->m_ptr3 = nullptr;
-
-    return cell;
+    if (cell->m_refs == 0) {
+        cell->m_cellStatus = CellStatus::White;
+        cell->m_ptr1 = nullptr;
+        cell->m_ptr2 = nullptr;
+        cell->m_ptr3 = nullptr;
+        return cell;
+    } else
+        return allocate();
 }
 
 } /* PGC */
