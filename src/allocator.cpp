@@ -24,7 +24,15 @@ Cell* Allocator::allocate()
 {
     if (m_free >= m_limit)
         return nullptr;
-    return m_free++;
+
+    auto cell = m_free++;
+    cell->m_cellStatus = CellStatus::White;
+    cell->m_refs = 0;
+    cell->m_ptr1 = nullptr;
+    cell->m_ptr2 = nullptr;
+    cell->m_ptr3 = nullptr;
+
+    return cell;
 }
 
 } /* PGC */
